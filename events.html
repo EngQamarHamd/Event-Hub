@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ايفينت هاب - جميع الفعاليات</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background: #0a0a0a;
+      color: #f3f3f3;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(90deg, #0055ff, #00bfff);
+      color: #fff;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .btn-gradient:hover {
+      background: linear-gradient(90deg, #00bfff, #0055ff);
+      transform: scale(1.05);
+    }
+
+    .event-card {
+      background-color: #0d1b2a;
+      color: #fff;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+    }
+
+    .badge {
+      background-color: #007bff !important;
+      color: #e0f0ff !important;
+      font-weight: 600;
+      border-radius: 20px;
+      padding: 6px 12px;
+    }
+
+    .bg-gradient-dark {
+      background: linear-gradient(135deg, #0a0a10 0%, #0f172a 50%, #1e3a8a 100%);
+    }
+
+    .form-control,
+    .form-select {
+      transition: all 0.3s ease;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 0.2rem rgba(59, 130, 246, 0.25);
+    }
+
+    .filter-card {
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #2563eb, #1e40af);
+      border: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+      transform: translateY(-2px);
+    }
+
+    .text-light-50 {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .input-group-text i {
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container d-flex align-items-center">
+      <a class="navbar-brand fw-bold text-white fs-3" href="index.html">ايفينت هاب</a>
+
+      <button class="navbar-toggler text-white border-0 me-auto" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="bi bi-list fs-2"></i>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link text-white fw-semibold" href="index.html">الرئيسية</a></li>
+          <li class="nav-item"><a class="nav-link text-white fw-semibold active" href="events.html">الفعاليات</a></li>
+          <li class="nav-item"><a class="nav-link text-white fw-semibold" href="about.html">من نحن</a></li>
+          <li class="nav-item"><a class="nav-link text-white fw-semibold" href="contact.html">اتصل بنا</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container my-5 all-events" style="margin-top: 8rem !important;">
+    <h1 class="fw-bold mb-5 text-center text-gradient">جميع الفعاليات</h1>
+
+    <div
+      class="filter-card shadow-lg border-0 rounded-4 p-4 position-relative overflow-hidden bg-gradient-dark text-light">
+      <div class="filter-overlay"></div>
+
+      <form id="filterForm" class="row gy-4 gx-3 align-items-end position-relative z-2">
+
+        <div class="col-12 col-lg-4">
+          <label class="form-label small fw-semibold text-uppercase text-light-50">بحث</label>
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-0 text-info">
+              <i class="bi bi-search"></i>
+            </span>
+            <input type="search" id="searchInput"
+              class="form-control rounded-pill px-4 py-2 bg-dark text-light border-secondary"
+              placeholder="اكتب كلمة رئيسية أو عنوان...">
+          </div>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <label class="form-label small fw-semibold text-uppercase text-light-50">الفئة</label>
+          <select id="catFilter" class="form-select rounded-pill px-3 py-2 bg-dark text-light border-secondary">
+            <option value="">الكل</option>
+            <option value="تقنية">تقنية</option>
+            <option value="علمية">علمية</option>
+            <option value="ثقافية">ثقافية</option>
+            <option value="رياضية">رياضية</option>
+          </select>
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <label class="form-label small fw-semibold text-uppercase text-light-50">التاريخ</label>
+          <input type="date" id="dateFilter"
+            class="form-control rounded-pill px-4 py-2 bg-dark text-light border-secondary">
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2">
+          <label class="form-label small fw-semibold text-uppercase text-light-50">المكان</label>
+          <input type="text" id="locFilter"
+            class="form-control rounded-pill px-4 py-2 bg-dark text-light border-secondary"
+            placeholder="المدينة أو الملعب">
+        </div>
+
+        <div class="col-6 col-md-3 col-lg-2 d-grid">
+          <button type="button" id="clearFilters" class="btn btn-primary rounded-pill py-2 fw-semibold">
+            <i class="bi bi-x-circle ms-1"></i> مسح
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <section id="eventsList" class="row g-4 mt-5"></section>
+  </main>
+
+  <button id="scrollTopBtn" title="العودة للأعلى">
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <footer class="bg-dark text-light pt-5 pb-3">
+    <div class="container">
+      <div class="row gy-4 text-center text-md-end align-items-start">
+
+        <div class="col-md-4">
+          <h5 class="fw-bold mb-3 text-uppercase">ايفينت هاب</h5>
+          <p class="small text-secondary lh-lg">
+            منصتك الأولى لإكتشاف فعاليات الجامعة الإفتراضية السورية.
+          </p>
+        </div>
+
+        <div class="col-md-4">
+          <h5 class="fw-bold mb-3 text-uppercase">اتصل بنا</h5>
+          <ul class="list-unstyled small text-secondary mb-0">
+            <li class="d-flex align-items-center justify-content-center justify-content-md-start gap-2">
+              <i class="bi bi-envelope-fill text-primary"></i>
+              <a href="mailto:EventHub@email.com" class="text-light text-decoration-none">
+                EventHub@email.com
+              </a>
+            </li>
+            <li class="mt-2 d-flex align-items-center justify-content-center justify-content-md-start gap-2" dir="ltr">
+              <span class="text-light">+963 11111111</span>
+              <i class="bi bi-telephone-fill text-primary"></i>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-md-4">
+          <h5 class="fw-bold mb-3 text-uppercase">تابعنا</h5>
+          <div class="d-flex justify-content-center justify-content-md-start gap-3 fs-4">
+            <a href="#" class="text-light" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-light" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-light" aria-label="Twitter X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" class="text-light" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <hr class="my-4 border-secondary opacity-25">
+
+      <div class="text-center small text-secondary">
+        © 2026 ايفينت هاب — جميع الحقوق محفوظة
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const allEvents = [
+      {
+        title: "المسابقة البرمجية العربية لعام 2023.",
+        location: "جامعة دمشق",
+        date: "20/9/2023",
+        image: "assets/imgs/event-1.jpg",
+        description: "مسابقة تهدف إلى تنمية مهارات البرمجة والتفكير المنطقي لدى المشاركين، وتعزيز روح الابتكار والمنافسة في المجال التقني.",
+        category: "تقنية"
+      },
+      {
+        title: "مسابقة المحتوى الرقمي العربي لعام 2019.",
+        location: " دمشق – سوريا",
+        date: "10/10/2019",
+        image: "assets/imgs/event-2.jpg",
+        description: "مسابقة تهدف إلى تشجيع إنتاج المحتوى الرقمي باللغة العربية ودعم الإبداع والابتكار في المجال الرقمي.",
+        category: "ثقافية"
+      },
+      {
+        title: " المسابقة البرمجية HIAST SVU CPC 2019.",
+        location: " دمشق – سوريا",
+        date: "25/10/2019",
+        image: "assets/imgs/event-3.jpg",
+        description: "مسابقة برمجية تهدف إلى تنمية مهارات حل المشكلات والتفكير المنطقي وتعزيز روح المنافسة بين الطلاب.",
+        category: "تقنية"
+      },
+      {
+        title: "إطلاق مسابقة SYROBTX 2026 للروبوتات.",
+        location: "دمشق – سوريا",
+        date: "2026",
+        image: "assets/imgs/event-4.jpg",
+        description: " مسابقة تهدف إلى تمكين الشباب من تعلم تقنيات برمجة الروبوتات وتنمية مهاراتهم في الابتكار والتصميم والعمل التقني.",
+        category: "ثقافية"
+      },
+      {
+        title: "المسابقة البرمجية العربية لعام 2024.",
+        location: " دمشق – سوريا",
+        date: " 20/9/2024.",
+        image: "assets/imgs/event-5.jpg",
+        description: "مسابقة تهدف إلى تطوير مهارات البرمجة وحل المشكلات وتعزيز الابتكار والتنافس بين المشاركين.",
+        category: "تقنية"
+      },
+      {
+        title: "المسابقة البرمجية للأطفال واليافعين لعام 2025.",
+        location: "حمص – سوريا",
+        date: "15/8/2025",
+        image: "assets/imgs/event-6.jpg",
+        description: "مسابقة تهدف إلى تنمية مهارات البرمجة والتفكير الإبداعي لدى الأطفال واليافعين وتشجيعهم على الابتكار.",
+        category: "علمية"
+      },
+    ];
+
+    function renderEvents(events) {
+      const container = document.getElementById("eventsList");
+      container.innerHTML = "";
+      events.forEach(event => {
+        container.innerHTML += `
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="event-card card border-0 shadow-sm h-100 rounded-4 overflow-hidden">
+            <img src="${event.image}" class="card-img-top img-fluid" alt="${event.title}">
+            <div class="card-body d-flex flex-column">
+              <h3 class="h6 fw-bold mb-1">${event.title}</h3>
+              <p class="small text-light opacity-75 mb-1">${event.location}</p>
+              <p class="small text-light opacity-75 mb-2">${event.date}</p>
+              <p class="card-text small flex-grow-1">${event.description}</p>
+              <div class="mt-3 d-flex justify-content-between align-items-center">
+                <a href="#" class="btn btn-gradient btn-sm rounded-pill px-3"
+                   data-title="${event.title}"
+                   data-location="${event.location}"
+                   data-date="${event.date}"
+                   data-image="${event.image}"
+                   data-description="${event.description}"
+                   data-category="${event.category}"
+                   onclick="openEvent(this)">التفاصيل</a>
+                <span class="badge rounded-pill">${event.category}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      });
+    }
+
+    renderEvents(allEvents);
+
+    function openEvent(el) {
+      const selected = {
+        title: el.dataset.title,
+        location: el.dataset.location,
+        date: el.dataset.date,
+        image: el.dataset.image,
+        description: el.dataset.description,
+        category: el.dataset.category
+      };
+      localStorage.setItem("selectedEvent", JSON.stringify(selected));
+
+      const similar = [];
+      document.querySelectorAll(".event-card").forEach(card => {
+        const name = card.querySelector("h3")?.textContent.trim();
+        const cat = card.querySelector(".badge")?.textContent.trim();
+        if (cat === selected.category && name !== selected.title) {
+          similar.push({
+            title: name,
+            image: card.querySelector("img")?.src
+          });
+        }
+      });
+      localStorage.setItem("similarEvents", JSON.stringify(similar));
+
+      window.location.href = "event.html";
+    }
+  </script>
+
+  <script src="assets/JS/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
